@@ -6,7 +6,7 @@ function Character(data) {
 
     this.diceHtml = getDicePlaceholderHtml(this.diceCount)
 
-    this.setDiceHtml = function() {
+    this.setDiceHtml = function () {
         this.currentDiceScore = getDiceRollArray(this.diceCount)
         this.diceHtml = this.currentDiceScore.map((num) =>
             `<div class="dice">${num}</div>`).join("")
@@ -28,9 +28,9 @@ function Character(data) {
                     <div class="health-bar-inner ${percent < 26 ? "danger" : ""}" 
                             style="width:${percent}%;">
                     </div>
-                </div>`  
+                </div>`
     }
-    
+
 
     this.getCharacterHtml = function () {
         const { elementId, name, avatar, health, diceCount, diceHtml } = this

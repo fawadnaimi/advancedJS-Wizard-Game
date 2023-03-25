@@ -10,29 +10,29 @@ function getNewMonster() {
 }
 
 function attack() {
-    if(!isWaiting){
+    if (!isWaiting) {
         wizard.setDiceHtml()
         monster.setDiceHtml()
         wizard.takeDamage(monster.currentDiceScore)
         monster.takeDamage(wizard.currentDiceScore)
         render()
-        
-        if(wizard.dead){
+
+        if (wizard.dead) {
             endGame()
         }
-        else if(monster.dead){
+        else if (monster.dead) {
             isWaiting = true
-            if(monstersArray.length > 0){
-                setTimeout(()=>{
+            if (monstersArray.length > 0) {
+                setTimeout(() => {
                     monster = getNewMonster()
                     render()
                     isWaiting = false
-                },1500)
+                }, 1500)
             }
-            else{
+            else {
                 endGame()
             }
-        }    
+        }
     }
 }
 
@@ -44,15 +44,15 @@ function endGame() {
             "The monsters are Victorious"
 
     const endEmoji = wizard.health > 0 ? "🔮" : "☠️"
-        setTimeout(()=>{
-            document.body.innerHTML = `
+    setTimeout(() => {
+        document.body.innerHTML = `
                 <div class="end-game">
                     <h2>Game Over</h2> 
                     <h3>${endMessage}</h3>
                     <p class="end-emoji">${endEmoji}</p>
                 </div>
                 `
-        }, 1500)
+    }, 1500)
 }
 
 document.getElementById("attack-button").addEventListener('click', attack)
